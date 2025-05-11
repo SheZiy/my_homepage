@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定俊杰的个人主页</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0; /* 移除 body 的默认外边距 */
+            padding: 20px; /* 添加内边距，避免内容紧贴边缘 */
+            background-color: #f4f4f4; /* 默认背景色 */
+            color: #333;
+            transition: background-color 0.5s ease; /* ** 添加背景色变化过渡效果到 body ** */
+             min-height: 100vh; /* 确保 body 至少占满视口高度，方便鼠标区域划分 */
+             box-sizing: border-box; /* 内边距不影响总高度 */
+        }
+        h1 {
+            color: #0056b3;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 0; /* 移除 h1 顶部默认外边距 */
+            margin-bottom: 20px; /* 增加 h1 底部外边距 */
+        }
+        h2 { /* 功能部分的标题 */
+            color: #007bff;
+            margin-top: 0; /* 移除 h2 顶部默认外边距 */
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+        }
+         h3 { /* 为每个小功能模块添加三级标题 */
+            color: #555;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 8px;
+            padding-left: 1.5em;
+            position: relative;
+        }
+        li:before {
+            content: "•";
+            color: #007bff;
+            position: absolute;
+            left: 0;
+        }
+        .profile-photo {
+            max-width: 200px;
+            height: auto;
+            border: 3px solid #007bff;
+            border-radius: 8px;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* ** 主要布局容器样式 (flexbox 实现水平布局) ** */
+        .main-container {
+            display: flex; /* 启用 Flexbox 布局 */
+            flex-wrap: wrap; /* 允许在空间不足时换行 */
+            gap: 40px; /* 左右两列之间的间距 */
+            margin-top: 20px;
+        }
+
+        /* ** 个人信息部分 (左侧列) ** */
+        .personal-info-section {
+            flex: 1; /* 让这部分占据可用空间 */
+            min-width: 300px; /* 最小宽度，防止内容挤压过度 */
+            /* padding-right: 20px; -- 间距使用 gap */
+        }
+
+        /* ** 小功能部分 (右侧列) ** */
+        .features-section {
+            flex: 1; /* 让这部分占据可用空间 */
+            min-width: 300px; /* 最小宽度 */
+
+            background-color: #fff; /* 添加背景色以区分 */
+            padding: 15px; /* 内部留白 */
+            border: 1px solid #ddd; /* 边框 */
+            border-radius: 8px; /* 圆角 */
+            box-sizing: border-box; /* 内边距和边框不增加元素总尺寸 */
+        }
+
+
+        /* 功能按钮样式 */
+        .feature-button {
+            display: inline-block;
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #17a2b8; /* 信息蓝色 */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 10px; /* 按钮之间间隔 */
+        }
+        .feature-button:hover {
+            background-color: #138496;
+        }
+
+        /* 点击计数器样式 */
+        #clickCountDisplay {
+            font-weight: bold;
+            color: #dc3545; /* 警告红色 */
+        }
+
+        /* 随机语录样式 */
+        #randomQuoteDisplay {
+            margin-top: 8px;
+            font-style: italic;
+            color: #555;
+        }
+
+        /* ** 动态时间显示样式 ** */
+        #currentTimeDisplay {
+            margin-top: 15px;
+            font-size: 1.1em;
+            color: #555;
+            text-align: center; 
+        }
+         #currentTimeDisplay strong {
+             color: #0056b3;
+         }
+
+         hr {
+            border: none;
+            height: 1px;
+            background-color: #ccc;
+            margin: 15px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>成员1的个人主页</h1>
+
+    <p>欢迎来到我的个人空间！</p>
+    <p>这里是成员1的个人介绍区域。你可以根据需要添加以下信息：</p>
+
+    <!-- ** 主要布局容器 ** -->
+    <div class="main-container">
+
+        <!-- ** 左侧：个人信息部分 ** -->
+        <div class="personal-info-section">
+            <ul>
+                <li>姓名：定俊杰</li>
+                <li>学号：2022302051157</li>
+                <li>兴趣爱好：游戏</li>
+                <li>联系方式：3544758352@qq.com</li>
+            </ul>
+            <p>
+                <!-- 请确保 member1.jpg 文件存在 -->
+                <img src="member1.jpg" alt="我的照片" class="profile-photo">
+            </p>
+        </div>
+
+        <!-- ** 右侧：小功能部分 ** -->
+        <div class="features-section">
+            <h2>小功能展示</h2>
+
+            <!-- 网页背景色互动说明 (不再需要独立的背景变色 HTML 元素) -->
+            <h3>网页背景色互动</h3>
+            <p>请将鼠标在网页上移动，背景色会随鼠标位置（左上、右上、左下、右下）变化。</p>
+
+            <hr> <!-- 分隔线 -->
+
+            <!-- 点击计数器功能 -->
+             <h3>点击计数器</h3>
+            <p>
+                <button id="clickMeBtn" class="feature-button">点我试试</button>
+                你已经点击了 <span id="clickCountDisplay">0</span> 次。
+            </p>
+
+             <hr> <!-- 分隔线 -->
+
+            <!-- 随机语录功能 -->
+             <h3>随机语录</h3>
+            <p>
+                <button id="getQuoteBtn" class="feature-button">来句语录</button>
+            </p>
+            <div id="randomQuoteDisplay">点击按钮获取一句随机语录。</div>
+
+            <hr> <!-- 分隔线 -->
+
+            <!-- 动态时间显示功能 -->
+             <h3>当前实时时间</h3>
+            <div id="currentTimeDisplay">
+                 <strong>当前时间:</strong> <span id="timeSpan"></span>
+            </div>
+
+        </div>
+    </div> <!-- ** main-container 结束 ** -->
+
+
+    <!-- 返回链接 (通常放在主内容下方) -->
+    <p style="margin-top: 20px; text-align: center;">
+        <a href="index.html">返回小组主页</a>
+    </p>
+
+    <script>
+        // --- 网页背景色变化 (基于鼠标位置) ---
+        const bodyElement = document.body;
+        const defaultBodyColor = '#f4f4f4'; // 需要与 CSS 中 body 的默认背景色一致
+
+        // 定义四个区域对应的颜色 (左上, 右上, 左下, 右下)
+        const colors = {
+            topLeft: '#90EE90',     // 青草绿 (LightGreen)
+            topRight: '#87CEEB',    // 天空蓝 (SkyBlue)
+            bottomLeft: '#ed7caf',  // 浅紫色 (LightPurple)
+            bottomRight: '#FFDAA0' // 柔和橙 (Light Orange/Peach)
+        };
+
+        // 监听鼠标在窗口内的移动事件
+        window.addEventListener('mousemove', (event) => {
+            // 获取鼠标相对于视口的坐标
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // 获取视口的宽度和高度
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            let newColor = defaultBodyColor; // 默认颜色
+
+            // 判断鼠标所在的区域并设置对应的颜色
+            if (mouseX < viewportWidth / 2 && mouseY < viewportHeight / 2) {
+                // 左上角
+                newColor = colors.topLeft;
+            } else if (mouseX >= viewportWidth / 2 && mouseY < viewportHeight / 2) {
+                // 右上角
+                newColor = colors.topRight;
+            } else if (mouseX < viewportWidth / 2 && mouseY >= viewportHeight / 2) {
+                // 左下角
+                newColor = colors.bottomLeft;
+            } else { // mouseX >= viewportWidth / 2 && mouseY >= viewportHeight / 2
+                // 右下角
+                newColor = colors.bottomRight;
+            }
+            // 设置 body 的背景色
+            bodyElement.style.backgroundColor = newColor;
+
+        });
+
+        // --- 动态时间显示 ---
+        const timeSpan = document.getElementById('timeSpan');
+
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            timeSpan.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // 每秒更新时间
+        updateTime(); // 先立即更新一次
+        setInterval(updateTime, 1000); // 然后每1000毫秒 (1秒) 更新一次
+
+
+        // --- 点击计数器 ---
+        const clickMeBtn = document.getElementById('clickMeBtn');
+        const clickCountDisplay = document.getElementById('clickCountDisplay');
+        let clickCount = 0;
+
+        clickMeBtn.addEventListener('click', () => {
+            clickCount++;
+            clickCountDisplay.textContent = clickCount;
+        });
+
+        // --- 随机语录 ---
+        const getQuoteBtn = document.getElementById('getQuoteBtn');
+        const randomQuoteDisplay = document.getElementById('randomQuoteDisplay');
+
+        const quotes = [
+            "天行健，君子以自强不息。",
+            "地势坤，君子以厚德载物。",
+            "知之者不如好之者，好之者不如乐之者。",
+            "敏而好学，不耻下问。",
+            "三人行，必有我师焉。",
+            "学而不思则罔，思而不学则殆。",
+            "温故而知新，可以为师矣。",
+            "黑夜给了我黑色的眼睛，我却用它寻找光明。",
+            "生命不息，奋斗不止。",
+            "故天将降大任于是人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。",
+            "纸上得来终觉浅，绝知此事要躬行。",
+            "苟利国家生死以，岂因祸福避趋之。",
+            "莫愁前路无知己，天下谁人不识君。",
+            "问渠那得清如许？为有源头活水来。",
+            "会当凌绝顶，一览众山小。"
+        ];
+
+        getQuoteBtn.addEventListener('click', () => {
+            // 生成一个随机索引
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            // 获取随机语录
+            const randomQuote = quotes[randomIndex];
+            // 显示语录
+            randomQuoteDisplay.textContent = randomQuote;
+        });
+
+    </script>
+
+</body>
+</html>
